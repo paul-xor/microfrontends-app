@@ -15,6 +15,21 @@ const devConfig = {
       template: './public/index.html',
     }),
   ],
+  module: {
+    rules: [
+      // ... other rules
+      {
+        test: /\.jsx?$/, // Match both .js and .jsx files
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
+      },
+    ],
+  },
 };
 
 module.exports = merge(commonConfig, devConfig);

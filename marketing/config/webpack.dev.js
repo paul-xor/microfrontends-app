@@ -1,5 +1,5 @@
-const { merge } = reqiure('webpack-merge');
-const HtmlWebpackPlugin = require('html-minifier-terser');
+const { merge } = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const commonConfig = require('./webpack.common');
 
 const devConfig = {
@@ -7,14 +7,14 @@ const devConfig = {
   devServer: {
     port: 8081,
     historyApiFallback: {
-      index: 'index.html'
-    }
+      index: 'index.html',
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
-    })
-  ]
-}
+      template: './public/index.html',
+    }),
+  ],
+};
 
 module.exports = merge(commonConfig, devConfig);
